@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>配置hexo博客 | Site of oceanus</title><meta name="keywords" content="基础"><meta name="author" content="oceanus"><meta name="copyright" content="oceanus"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录一下，从零开始的hexo博客 首先确认系统环境  我使用的是Windows10，MacOS应该大差不差,同样后面的都是基于Win环境的下载和展开。  其次是Git和Node.js的配置  Git下载Node.js下载   在完成git和node的安装后，我们进入GitBash，开始Hexo的正式安装  我们使用的都是npm，Node.js下的包管理器。大陆用户不用梯子访问可能会有些迟缓，可以通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置hexo博客">
+<meta property="og:url" content="http://biscuitggq.github.io/2021/04/16/%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Site of oceanus">
+<meta property="og:description" content="记录一下，从零开始的hexo博客 首先确认系统环境  我使用的是Windows10，MacOS应该大差不差,同样后面的都是基于Win环境的下载和展开。  其次是Git和Node.js的配置  Git下载Node.js下载   在完成git和node的安装后，我们进入GitBash，开始Hexo的正式安装  我们使用的都是npm，Node.js下的包管理器。大陆用户不用梯子访问可能会有些迟缓，可以通">
+<meta property="og:locale">
+<meta property="og:image" content="http://biscuitggq.github.io/img/page/a3.png">
+<meta property="article:published_time" content="2021-04-16T13:32:09.000Z">
+<meta property="article:modified_time" content="2021-05-17T15:43:43.052Z">
+<meta property="article:author" content="oceanus">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://biscuitggq.github.io/img/page/a3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://biscuitggq.github.io/2021/04/16/%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '配置hexo博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-17 23:43:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/little/avatar.jpg" onerror="onerror=null;src='/img/little/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/page/a3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Site of oceanus</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">配置hexo博客</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-16T13:32:09.000Z" title="Created 2021-04-16 21:32:09">2021-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-17T15:43:43.052Z" title="Updated 2021-05-17 23:43:43">2021-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="配置hexo博客"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="记录一下，从零开始的hexo博客"><a href="#记录一下，从零开始的hexo博客" class="headerlink" title="记录一下，从零开始的hexo博客"></a>记录一下，从零开始的hexo博客</h2><blockquote>
+<p>首先确认系统环境</p>
+</blockquote>
+<p>我使用的是Windows10，MacOS应该大差不差,同样后面的都是基于Win环境的下载和展开。</p>
+<blockquote>
+<p>其次是Git和Node.js的配置</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git下载</a><br><a target="_blank" rel="noopener" href="https://nodejs.org/dist/v14.16.1/node-v14.16.1-x64.msi">Node.js下载</a></p>
+</blockquote>
+</blockquote>
+<p>在完成git和node的安装后，我们进入GitBash，开始Hexo的正式安装</p>
+<hr>
+<p>我们使用的都是npm，Node.js下的包管理器。大陆用户不用梯子访问可能会有些迟缓，可以通过更换淘宝的cnpm来加速。</p>
+<p>在GitBash中进行操作会更快，输入下面的指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>这里可以直接键入cnpm来检测是否安装成功</p>
+<blockquote>
+<p>对于hexo,我们就可以使用cnpm来安装了。</p>
+<blockquote>
+<p>在GitBash中使用指令</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装完成后，我们需要指定一个文件夹来作为我们的本地库，这个就是之后我们博客所有内容的一个基础。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;文件夹&gt;</span><br><span class="line">$ cd &lt;文件夹&gt;</span><br><span class="line">$ npm install   #进行基础目录的安装，下面简单介绍我们入门后我们会接触到的部分。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>—config.yml<blockquote>
+<p>网站的基本配置信息、参数等</p>
+</blockquote>
+</li>
+<li>package.json<blockquote>
+<p>网站的应用程序信息，比如我们记录文章的Markdown renderer就在这里</p>
+</blockquote>
+</li>
+<li>scaffolds<blockquote>
+<p>基础的模板文件夹，后面写博客可以直接调用</p>
+</blockquote>
+</li>
+<li>source<blockquote>
+<p>我们发布的博客文件等就会生成在这个位置</p>
+</blockquote>
+</li>
+<li>themes<blockquote>
+<p>主题文件夹，hexo应用主题也比较方便，后面会提到。</p>
+</blockquote>
+</li>
+</ul>
+<p>其实走到这一步，更多的内容应该去<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">官方文档</a>中挖掘了</p>
+<hr>
+<p>完成hexo的安装，我们在安装的&lt;文件夹&gt;下进入GitBash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>就启动了最基础的博客页面，默认端口应该是4000.</p>
+<blockquote>
+<p>我们Ctrl+C中断，添加我们的第一个页面</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n &quot;My First Hexo Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>英文引号内就是我们的标题了，进入source文件夹就可以看到生成的md文件，这里可以用你喜欢的方式进行编辑，我选择的是vscode，比较方便。</p>
+<p>md文档的语法这里不再赘述，有空我会总结一下。</p>
+<blockquote>
+<p>在本地访问肯定是远远不够的，这里我们选择绑定Github的仓库来进行远端部署。<br>Git的基础配置如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">$ git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">$ ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>得到ssh key之后三个回车<br>打开网页GitHub_Settings_keys页面，新建new SSH Key<br>复制得到的key，完成配置</p>
+<blockquote>
+<p>进入刚才提到的—config.yml中，找到deploy部分</p>
+<blockquote>
+<p>type: git<br>repo: 完整的仓库路径，应为<a target="_blank" rel="noopener" href="https://github.com/.../">https://github.com/.../</a>…<br>branch: master</p>
+</blockquote>
+</blockquote>
+<p>安装Git部署插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-giot --save</span><br></pre></td></tr></table></figure>
+<p>然后就完成了和GitHub的绑定，我们尝试一下。</p>
+<pre><code>hexo c #清除缓存，有的时候更改没能快速生效，就需要清理缓存
+
+hexo g #生成文件
+
+hexo d #部署
+</code></pre>
+<p>这样我们就能在&lt;仓库&gt;.github.io这个url中访问我们的博客了。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="/img/page/a3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/little/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/little/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/little/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/little/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/17/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src="/img/page/a6.jpg" onerror="onerror=null;src='/img/little/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Python学习笔记-基础语法篇</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/16/%E7%AC%AC%E4%B8%80%E7%AF%87Hexo%E5%8D%9A%E5%AE%A2/"><img class="next-cover" src="/img/page/a1.png" onerror="onerror=null;src='/img/little/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">第一篇博客</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/05/04/Python学习笔记-numpy-pandas/" title="Python学习笔记-numpy&pandas"><img class="cover" src="/img/page/a8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-04</div><div class="title">Python学习笔记-numpy&pandas</div></div></a></div><div><a href="/2021/04/29/Python学习笔记-正则表达式/" title="Python学习笔记-正则表达式"><img class="cover" src="/img/page/a3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-29</div><div class="title">Python学习笔记-正则表达式</div></div></a></div><div><a href="/2021/04/17/Python学习笔记-基础/" title="Python学习笔记-基础语法篇"><img class="cover" src="/img/page/a6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-17</div><div class="title">Python学习笔记-基础语法篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/little/avatar.jpg" onerror="this.onerror=null;this.src='/img/little/friend_404.gif'" alt="avatar"/><div class="author-info__name">oceanus</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/biscuitggq"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/biscuitggq" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:biscuit_guo@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%EF%BC%8C%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84hexo%E5%8D%9A%E5%AE%A2"><span class="toc-text">记录一下，从零开始的hexo博客</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/26/TensorFlow%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" title="Tensorflow实现敏感词过滤"><img src="/img/page/a5.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Tensorflow实现敏感词过滤"/></a><div class="content"><a class="title" href="/2021/05/26/TensorFlow%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" title="Tensorflow实现敏感词过滤">Tensorflow实现敏感词过滤</a><time datetime="2021-05-26T02:17:44.000Z" title="Created 2021-05-26 10:17:44">2021-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-numpy-pandas/" title="Python学习笔记-numpy&amp;pandas"><img src="/img/page/a8.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Python学习笔记-numpy&amp;pandas"/></a><div class="content"><a class="title" href="/2021/05/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-numpy-pandas/" title="Python学习笔记-numpy&amp;pandas">Python学习笔记-numpy&amp;pandas</a><time datetime="2021-05-04T04:16:37.000Z" title="Created 2021-05-04 12:16:37">2021-05-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Python学习笔记-正则表达式"><img src="/img/page/a3.png" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Python学习笔记-正则表达式"/></a><div class="content"><a class="title" href="/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Python学习笔记-正则表达式">Python学习笔记-正则表达式</a><time datetime="2021-04-29T08:57:19.000Z" title="Created 2021-04-29 16:57:19">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/28/%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E7%9A%84%E5%A4%A7%E5%90%8C%E4%B9%8B%E8%A1%8C/" title="提前准备的大同之行(待定)"><img src="/img/page/a6.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="提前准备的大同之行(待定)"/></a><div class="content"><a class="title" href="/2021/04/28/%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E7%9A%84%E5%A4%A7%E5%90%8C%E4%B9%8B%E8%A1%8C/" title="提前准备的大同之行(待定)">提前准备的大同之行(待定)</a><time datetime="2021-04-28T04:35:14.000Z" title="Created 2021-04-28 12:35:14">2021-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E8%B7%AF%E6%80%8E%E4%B9%88%E8%B5%B0/" title="聊聊该怎么选择"><img src="/img/page/a2.png" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="聊聊该怎么选择"/></a><div class="content"><a class="title" href="/2021/04/20/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E8%B7%AF%E6%80%8E%E4%B9%88%E8%B5%B0/" title="聊聊该怎么选择">聊聊该怎么选择</a><time datetime="2021-04-20T15:07:22.000Z" title="Created 2021-04-20 23:07:22">2021-04-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By oceanus</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

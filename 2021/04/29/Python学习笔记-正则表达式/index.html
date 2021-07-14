@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python学习笔记-正则表达式 | Site of oceanus</title><meta name="keywords" content="基础"><meta name="author" content="oceanus"><meta name="copyright" content="oceanus"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RegEx正则表达式首先来学习简单的python匹配： 123456pattern1 &#x3D; &quot;cat&quot;pattern2 &#x3D; &quot;dog&quot;nmsl &#x3D; &quot;cat eats birds&quot;print(pattern1 in nmsl) #使用in就能简单匹配字符串print(pattern2 in nmsl) 得到True和False的输出 在使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记-正则表达式">
+<meta property="og:url" content="http://biscuitggq.github.io/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Site of oceanus">
+<meta property="og:description" content="RegEx正则表达式首先来学习简单的python匹配： 123456pattern1 &#x3D; &quot;cat&quot;pattern2 &#x3D; &quot;dog&quot;nmsl &#x3D; &quot;cat eats birds&quot;print(pattern1 in nmsl) #使用in就能简单匹配字符串print(pattern2 in nmsl) 得到True和False的输出 在使用">
+<meta property="og:locale">
+<meta property="og:image" content="http://biscuitggq.github.io/img/page/a3.png">
+<meta property="article:published_time" content="2021-04-29T08:57:19.000Z">
+<meta property="article:modified_time" content="2021-05-17T15:43:20.168Z">
+<meta property="article:author" content="oceanus">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://biscuitggq.github.io/img/page/a3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://biscuitggq.github.io/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python学习笔记-正则表达式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-17 23:43:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/little/avatar.jpg" onerror="onerror=null;src='/img/little/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/page/a3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Site of oceanus</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python学习笔记-正则表达式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-29T08:57:19.000Z" title="Created 2021-04-29 16:57:19">2021-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-17T15:43:20.168Z" title="Updated 2021-05-17 23:43:20">2021-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python学习笔记-正则表达式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="RegEx正则表达式"><a href="#RegEx正则表达式" class="headerlink" title="RegEx正则表达式"></a>RegEx正则表达式</h2><p>首先来学习简单的python匹配：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pattern1 = <span class="string">&quot;cat&quot;</span></span><br><span class="line">pattern2 = <span class="string">&quot;dog&quot;</span></span><br><span class="line">nmsl = <span class="string">&quot;cat eats birds&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(pattern1 <span class="keyword">in</span> nmsl) <span class="comment">#使用in就能简单匹配字符串</span></span><br><span class="line"><span class="built_in">print</span>(pattern2 <span class="keyword">in</span> nmsl)</span><br></pre></td></tr></table></figure>
+<p>得到True和False的输出</p>
+<p>在使用正则前：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re <span class="comment">#引入regular expression模块</span></span><br></pre></td></tr></table></figure>
+<p>然后进行正则匹配：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pattern1 = <span class="string">&quot;cat&quot;</span></span><br><span class="line">pattern2 = <span class="string">&quot;dog&quot;</span></span><br><span class="line">nmsl = <span class="string">&quot;cat eats birds&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(re.search(pattern1,nmsl)) <span class="comment">#在nmsl中匹配pattern1</span></span><br><span class="line"><span class="built_in">print</span>(re.search(pattern2,nmsl))</span><br></pre></td></tr></table></figure>
+<p>乍看之下没多大区别，只是语法形式发生了变换</p>
+<h3 id="多种匹配"><a href="#多种匹配" class="headerlink" title="多种匹配"></a>多种匹配</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pattern1 = <span class="string">&quot;c[ao]t&quot;</span> <span class="comment">#使用[]来框选允许替换的部分，a和o都可以完成匹配</span></span><br><span class="line">nmsl = <span class="string">&quot;cat eats birds&quot;</span></span><br><span class="line">nmysl = <span class="string">&quot;cot eats birds&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(re.search(pattern1,nmsl)) <span class="comment">#在nmsl中匹配pattern1</span></span><br><span class="line"><span class="built_in">print</span>(re.search(pattern1,nmysl)) <span class="comment">#在nmysl中匹配pattern1</span></span><br></pre></td></tr></table></figure>
+<p>得到的两个返回都是成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span&#x3D;(0, 3), match&#x3D;&#39;cat&#39;&gt;</span><br><span class="line">&lt;re.Match object; span&#x3D;(0, 3), match&#x3D;&#39;cot&#39;&gt;</span><br></pre></td></tr></table></figure>
+<p>而在python中还可以做到：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c[A-Z]t&quot;</span>,nmsl))</span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c[a-z]t&quot;</span>,nmsl))</span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c[0-9]t&quot;</span>,nmsl))</span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c[0-9a-z]t&quot;</span>,nmsl))</span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊匹配"><a href="#特殊匹配" class="headerlink" title="特殊匹配"></a>特殊匹配</h3><h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\dt&quot;</span>,nmsl)) <span class="comment">#数字</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\Dt&quot;</span>,nmsl)) <span class="comment">#非数字</span></span><br></pre></td></tr></table></figure>
+<h4 id="空白符"><a href="#空白符" class="headerlink" title="空白符"></a>空白符</h4><p><code>\n</code> <code>\t</code> <code>\r</code> <code>\f</code> <code>\v</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\st&quot;</span>,nmsl)) <span class="comment">#空白</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\St&quot;</span>,nmsl)) <span class="comment">#非空白</span></span><br></pre></td></tr></table></figure>
+<h4 id="所有字母数字下划线"><a href="#所有字母数字下划线" class="headerlink" title="所有字母数字下划线"></a>所有字母数字下划线</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\wt&quot;</span>,nmsl)) <span class="comment">#所有字母数字下划线</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c\Wt&quot;</span>,nmsl)) <span class="comment">#非所有字母数字下划线</span></span><br></pre></td></tr></table></figure>
+<h4 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;\bcat\b&quot;</span>,nmsl)) <span class="comment">#所有贴着包含cat的空格</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;\Bcat\B&quot;</span>,nmsl)) <span class="comment">#非所有......</span></span><br></pre></td></tr></table></figure>
+<h4 id="特殊字符-amp-任意字符"><a href="#特殊字符-amp-任意字符" class="headerlink" title="特殊字符&amp;任意字符"></a>特殊字符&amp;任意字符</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;cat\\&quot;</span>,nmsl)) <span class="comment">#\</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;c.t&quot;</span>,nmsl)) <span class="comment">#.可以匹配除换行符外的任意字符</span></span><br></pre></td></tr></table></figure>
+<h4 id="句尾-amp-句首"><a href="#句尾-amp-句首" class="headerlink" title="句尾&amp;句首"></a>句尾&amp;句首</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;^cat&quot;</span>,nmsl)) <span class="comment">#出现在句首完成匹配</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;cat$&quot;</span>,nmsl)) <span class="comment">#出现在句尾完成匹配</span></span><br></pre></td></tr></table></figure>
+<h4 id="是否"><a href="#是否" class="headerlink" title="是否"></a>是否</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;cat(yy)&quot;</span>,nmsl)) <span class="comment">#cat和catyy都可以匹配</span></span><br></pre></td></tr></table></figure>
+<h4 id="多行匹配"><a href="#多行匹配" class="headerlink" title="多行匹配"></a>多行匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">line = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  dog runs to cat</span></span><br><span class="line"><span class="string">  nm is a dog</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;dog&quot;</span>,line,flag = re.M)) <span class="comment">#出现在句首完成匹配</span></span><br></pre></td></tr></table></figure>
+<h4 id="0次或多次"><a href="#0次或多次" class="headerlink" title="0次或多次"></a>0次或多次</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;ab*&quot;</span>,<span class="string">&quot;aaaaa&quot;</span>)) </span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;ab*&quot;</span>,<span class="string">&quot;ababababbbaa&quot;</span>)) <span class="comment">#会匹配所有符合条件的部分</span></span><br></pre></td></tr></table></figure>
+<h4 id="1次或多次"><a href="#1次或多次" class="headerlink" title="1次或多次"></a>1次或多次</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;ab+&quot;</span>,<span class="string">&quot;aaaaa&quot;</span>)) </span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;ab+&quot;</span>,<span class="string">&quot;ababababbbaa&quot;</span>)) <span class="comment">#会匹配所有符合条件的部分</span></span><br></pre></td></tr></table></figure>
+<h4 id="指定出现次数"><a href="#指定出现次数" class="headerlink" title="指定出现次数"></a>指定出现次数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;ab&#123;2，4&#125;&quot;</span>,<span class="string">&quot;aaaaa&quot;</span>)) </span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&quot;a&#123;1,2&#125;b&#123;2，4&#125;&quot;</span>,<span class="string">&quot;abbabababbbaa&quot;</span>)) <span class="comment">#会匹配所有符合条件的部分</span></span><br></pre></td></tr></table></figure>
+<h4 id="group组"><a href="#group组" class="headerlink" title="group组"></a>group组</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">match = re.search(<span class="string">&quot;(\d+),Date: (.+)&quot;</span>,<span class="string">&quot;3342840,Date: May/1/2021&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(match.group()) <span class="comment">#输出所有组</span></span><br><span class="line"><span class="built_in">print</span>(match.group(<span class="number">1</span>)) <span class="comment">#输出第一个括号匹配的内容</span></span><br><span class="line"><span class="built_in">print</span>(match.group(<span class="number">2</span>)) <span class="comment">#输出第二个括号匹配的内容</span></span><br></pre></td></tr></table></figure>
+<p>当group的数量非常多时，还可以添加名字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">match = re.search(<span class="string">&quot;(?P&lt;id&gt;\d+),Date: (?P&lt;Date&gt;.+)&quot;</span>,<span class="string">&quot;3342840,Date: May/1/2021&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(match.group(<span class="built_in">id</span>)) <span class="comment">#输出group名为id的匹配内容</span></span><br><span class="line"><span class="built_in">print</span>(match.group(Date)) <span class="comment">#输出group名为Date的匹配内容</span></span><br></pre></td></tr></table></figure>
+<h4 id="寻找所有匹配"><a href="#寻找所有匹配" class="headerlink" title="寻找所有匹配"></a>寻找所有匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.findall(<span class="string">&quot;r[ua]n&quot;</span>,<span class="string">&quot;I run to his mother&#x27;s house,but his mother rans to heaven.&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>会得到<code>[&#39;run&#39;, &#39;ran&#39;]</code>的返回</p>
+<p><code>r[ua]n</code>也有<code>(run|ran)</code>、<code>r(u|a)n</code>的写法</p>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><p>匹配内容-替换内容-替换位置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.sub(<span class="string">&quot;runs&quot;</span>,<span class="string">&quot;catches&quot;</span>,<span class="string">&quot;The dog runs to cat.&quot;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="分裂"><a href="#分裂" class="headerlink" title="分裂"></a>分裂</h4><p>匹配到特定内容时，对字符串进行分裂</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.split(<span class="string">&quot;[,:;]&quot;</span>,<span class="string">&quot;我去你家,你妈说:她死了;但又没完全死&quot;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h4><p>对正则表达式进行编译，完整表现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">nmsl = re.<span class="built_in">compile</span>(<span class="string">&quot;\d+&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(nmsl.search(<span class="string">&quot;3423422aa&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>将正则表达式生成为一个对象，拥有match和search函数的调用</p>
+<blockquote>
+<p>以上就是python中正则表达式的基本使用法</p>
+<blockquote>
+<p>可以通过 <strong><a target="_blank" rel="noopener" href="https://regex101.com/">正则大师</a></strong> 来验证正则表达式的正确性</p>
+</blockquote>
+</blockquote>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="/img/page/a3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/little/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/little/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/little/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/little/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-numpy-pandas/"><img class="prev-cover" src="/img/page/a8.jpg" onerror="onerror=null;src='/img/little/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Python学习笔记-numpy&amp;pandas</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/28/%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E7%9A%84%E5%A4%A7%E5%90%8C%E4%B9%8B%E8%A1%8C/"><img class="next-cover" src="/img/page/a6.jpg" onerror="onerror=null;src='/img/little/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">提前准备的大同之行(待定)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/05/04/Python学习笔记-numpy-pandas/" title="Python学习笔记-numpy&pandas"><img class="cover" src="/img/page/a8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-04</div><div class="title">Python学习笔记-numpy&pandas</div></div></a></div><div><a href="/2021/04/16/配置hexo博客/" title="配置hexo博客"><img class="cover" src="/img/page/a3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-16</div><div class="title">配置hexo博客</div></div></a></div><div><a href="/2021/04/17/Python学习笔记-基础/" title="Python学习笔记-基础语法篇"><img class="cover" src="/img/page/a6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-17</div><div class="title">Python学习笔记-基础语法篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/little/avatar.jpg" onerror="this.onerror=null;this.src='/img/little/friend_404.gif'" alt="avatar"/><div class="author-info__name">oceanus</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/biscuitggq"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/biscuitggq" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:biscuit_guo@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RegEx%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">RegEx正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%A7%8D%E5%8C%B9%E9%85%8D"><span class="toc-text">多种匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%8C%B9%E9%85%8D"><span class="toc-text">特殊匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-text">数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E7%99%BD%E7%AC%A6"><span class="toc-text">空白符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="toc-text">所有字母数字下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-text">空白字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6-amp-%E4%BB%BB%E6%84%8F%E5%AD%97%E7%AC%A6"><span class="toc-text">特殊字符&amp;任意字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%A5%E5%B0%BE-amp-%E5%8F%A5%E9%A6%96"><span class="toc-text">句尾&amp;句首</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%90%A6"><span class="toc-text">是否</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="toc-text">多行匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0%E6%AC%A1%E6%88%96%E5%A4%9A%E6%AC%A1"><span class="toc-text">0次或多次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E6%AC%A1%E6%88%96%E5%A4%9A%E6%AC%A1"><span class="toc-text">1次或多次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0"><span class="toc-text">指定出现次数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#group%E7%BB%84"><span class="toc-text">group组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D"><span class="toc-text">寻找所有匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-text">替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E8%A3%82"><span class="toc-text">分裂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compile"><span class="toc-text">compile</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/26/TensorFlow%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" title="Tensorflow实现敏感词过滤"><img src="/img/page/a5.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Tensorflow实现敏感词过滤"/></a><div class="content"><a class="title" href="/2021/05/26/TensorFlow%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4/" title="Tensorflow实现敏感词过滤">Tensorflow实现敏感词过滤</a><time datetime="2021-05-26T02:17:44.000Z" title="Created 2021-05-26 10:17:44">2021-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-numpy-pandas/" title="Python学习笔记-numpy&amp;pandas"><img src="/img/page/a8.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Python学习笔记-numpy&amp;pandas"/></a><div class="content"><a class="title" href="/2021/05/04/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-numpy-pandas/" title="Python学习笔记-numpy&amp;pandas">Python学习笔记-numpy&amp;pandas</a><time datetime="2021-05-04T04:16:37.000Z" title="Created 2021-05-04 12:16:37">2021-05-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Python学习笔记-正则表达式"><img src="/img/page/a3.png" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="Python学习笔记-正则表达式"/></a><div class="content"><a class="title" href="/2021/04/29/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Python学习笔记-正则表达式">Python学习笔记-正则表达式</a><time datetime="2021-04-29T08:57:19.000Z" title="Created 2021-04-29 16:57:19">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/28/%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E7%9A%84%E5%A4%A7%E5%90%8C%E4%B9%8B%E8%A1%8C/" title="提前准备的大同之行(待定)"><img src="/img/page/a6.jpg" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="提前准备的大同之行(待定)"/></a><div class="content"><a class="title" href="/2021/04/28/%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E7%9A%84%E5%A4%A7%E5%90%8C%E4%B9%8B%E8%A1%8C/" title="提前准备的大同之行(待定)">提前准备的大同之行(待定)</a><time datetime="2021-04-28T04:35:14.000Z" title="Created 2021-04-28 12:35:14">2021-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E8%B7%AF%E6%80%8E%E4%B9%88%E8%B5%B0/" title="聊聊该怎么选择"><img src="/img/page/a2.png" onerror="this.onerror=null;this.src='/img/little/404.jpg'" alt="聊聊该怎么选择"/></a><div class="content"><a class="title" href="/2021/04/20/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E8%B7%AF%E6%80%8E%E4%B9%88%E8%B5%B0/" title="聊聊该怎么选择">聊聊该怎么选择</a><time datetime="2021-04-20T15:07:22.000Z" title="Created 2021-04-20 23:07:22">2021-04-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By oceanus</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
