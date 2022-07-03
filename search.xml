@@ -4,26 +4,25 @@
   
     
     <entry>
-      <title>对于Java泛型的一些思考</title>
+      <title>对于Java泛型的一些理解</title>
       <link href="/2022/07/04/%E5%AF%B9%E4%BA%8EJava%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
       <url>/2022/07/04/%E5%AF%B9%E4%BA%8EJava%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote><p>先举个栗子：</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; li = <span class="keyword">new</span> ArrayList&lt;Integer&gt;;</span><br></pre></td></tr></table></figure><h3 id="使用泛型的原因"><a href="#使用泛型的原因" class="headerlink" title="使用泛型的原因"></a>使用泛型的原因</h3><ul><li><p>最早泛型在JDK5中引用的原因，就是为了方便程序员在设计程序时更加规范，减少因为类型模糊而产生的运行时报错<code>Error</code>。<br>而使用泛型后，能够将错误提前到编译时期就能够发现，说到底还是为了节省资源（钱）。</p></li><li><p>同样，泛型相当于提前标定了统一的模具，这样就不用临了给数据类型带上强制转换的帽子了，虽然是这么说，我局的泛型本身也是一种类型转换，但属于<strong>把丑话说在前边</strong>了。</p></li><li><p>对于泛型类、泛型方法、泛型接口，泛型是一种更缥缈的数据类型，相当于是在最开始<strong>不把话说满</strong>，把坑挖好，到时候往进塞什么都可以，不论是黄瓜还是茄子，只需要在使用到这个泛型所对应实现的时候，再去赋予具体的数据类型。</p><blockquote><p>这么看来，泛型更像是安全套。</p></blockquote></li><li><p>但其实泛型是一种更抽象的东西，之前说过，泛型会把错误提前到编译前。但实际运行的时候，<code>List&lt;String&gt; li = new ArratList&lt;String&gt;;</code>会变成<code>List li = new ArrayList;</code>,泛型会被擦除来降低运行时的开销。</p></li></ul><blockquote><p>太抽象了，运动的时候戴上，最后一下来真的却摘了，看来安全套这东西只是好男人的一个证明罢了，泪目。</p></blockquote><h3 id="使用泛型的注意事项"><a href="#使用泛型的注意事项" class="headerlink" title="使用泛型的注意事项"></a>使用泛型的注意事项</h3><p><strong>泛型必须使用包装类</strong>，常见的byte、int等是无法放到泛型那个<code>&lt;&gt;</code>中的，因为实现类是需要<code>null</code>的，基本数据类型不会为<code>null</code>，包装一下就可以返回<code>null</code>了。<br>包装类这么NB，为啥还要使用基本类型捏？我相信当这个世界不需要钱的时候，我们就可以肆无忌惮地使用包装类了。</p><h3 id="泛型的缺点"><a href="#泛型的缺点" class="headerlink" title="泛型的缺点"></a>泛型的缺点</h3><ol><li>泛型被擦除后，就起不到保险的作用了，比如我编译时限定了<code>String</code>类型，但运行时才会传入这个值，比如输入了个<code>Integer</code>的114514，那不就崩溃了么。</li><li>所以我们决定多弄几个构造方法，让他能够接收不同数据类型就好了嘛（？那你还限制泛型，属实有病），但是不同构造方法的泛型都会被擦除，最后变成一样的构造，太傻比了，怎么解决捏？<strong>这就是通配符的事情了</strong></li></ol>]]></content>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>搬家</title>
-      <link href="/2022/03/20/%E6%90%AC%E5%AE%B6/"/>
-      <url>/2022/03/20/%E6%90%AC%E5%AE%B6/</url>
-      
-        <content type="html"><![CDATA[]]></content>
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
       
       
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
       
     </entry>
     
